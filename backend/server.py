@@ -140,12 +140,12 @@ jpype.startJVM(
 )
 
 
-# @hug.response_middleware()
-# def process_data(request, response, resource):
-#     response.set_header('Access-Control-Allow-Origin', '*')
+@hug.response_middleware()
+def process_data(request, response, resource):
+    response.set_header('Access-Control-Allow-Origin', '*')
 
 
-@hug.post()
+@hug.post('/audio')
 def get_alignment_from_audio(body, response):
     """Calculate alignment of an MEI file to an audio file.
     
@@ -204,7 +204,7 @@ def get_alignment_from_audio(body, response):
     return id_to_time
 
 
-@hug.post()
+@hug.post('/youtube')
 def get_alignment_from_yt(body, response):
     """Calculate alignment of an MEI file to an youtube video.
 
@@ -220,7 +220,7 @@ def get_alignment_from_yt(body, response):
     # Work in temporary directory
     with tempfile.TemporaryDirectory() as temp_dir:
         # Download YouTube video
-        youtube_url = body['youtube-url'].decode()
+        youtube_url = body['youtube-url']
         video_path = os.path.join(temp_dir, 'youtube.audio')
         download_video(youtube_url, 249, video_path) # 249 = <Stream: itag="249" mime_type="audio/webm" abr="50kbps" acodec="opus">
 

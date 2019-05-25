@@ -32,8 +32,8 @@ WORKDIR /usr/src/app
 ADD backend/environment.yml ./
 RUN conda env create
 
-ADD dist /usr/src/app/static/
+ADD dist ./
 ADD backend ./
 
 EXPOSE 8001
-CMD ["conda activate score-tube && exec gunicorn --bind=0.0.0.0:8001 --workers=2 --timeout 180 server:__hug_wsgi__"]
+CMD ["activate score-tube & exec /opt/conda/envs/score-tube/bin/gunicorn --bind=0.0.0.0:8001 --workers=2 --timeout 180 server:__hug_wsgi__"]

@@ -14,27 +14,24 @@
   "dependencies": {
     "axios": "^0.18.0",
     "core-js": "^2.6.5",
+    "d3": "^5.9.2",
     "file-saver": "^2.0.2",
+    "get-youtube-id": "^1.0.1",
     "jquery": "^3.4.1",
-    "ulid": "^2.3.0",
-    "vkbeautify": "^0.99.3",
     "vue": "^2.6.10",
-    "vue-top-progress": "^0.7.0",
-    "vuetify": "^1.5.5"
+    "vuetify": "^1.5.5",
+    "vuetify-upload-button": "^2.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-plugin-eslint": "^3.7.0",
-    "@vue/cli-plugin-typescript": "^3.7.0",
     "@vue/cli-service": "^3.7.0",
     "@vue/eslint-config-airbnb": "^4.0.0",
-    "@vue/eslint-config-typescript": "^4.0.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
-    "typescript": "^3.4.3",
     "vue-cli-plugin-vuetify": "^0.5.0",
     "vue-template-compiler": "^2.5.21",
     "vuetify-loader": "^1.0.5"
@@ -46,15 +43,14 @@
     },
     "extends": [
       "plugin:vue/essential",
-      "@vue/airbnb",
-      "@vue/typescript"
+      "@vue/airbnb"
     ],
     "rules": {
       "linebreak-style": 0,
       "no-console": 0
     },
     "parserOptions": {
-      "parser": "@typescript-eslint/parser"
+      "parser": "babel-eslint"
     }
   },
   "postcss": {
