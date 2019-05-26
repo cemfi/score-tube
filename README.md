@@ -8,7 +8,7 @@ ScoreTube is a score following system based on MEI scores and audio files / YouT
 
 2. Run in container
 ```bash
-docker run -p 8001:8001 -it cemfi/score-tube
+docker run -p 8001:8001 -i --rm cemfi/score-tube
 ```
 
 3. Go to [http://localhost:8001](http://localhost:8001) and follow the onscreen instructions.
