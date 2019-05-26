@@ -6,7 +6,7 @@ ScoreTube is a score following system based on MEI scores and audio files / YouT
 ## How to Run
 1. Make sure to have [Docker](https://www.docker.com/) installed and running properly.
 
-2. Run in container
+2. Run the container in a terminal:
 ```bash
 docker run -p 8001:8001 -i --rm cemfi/score-tube
 ```
