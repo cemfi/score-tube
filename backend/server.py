@@ -13,13 +13,12 @@ import librosa
 import numpy as np
 import requests
 
-from pytube import YouTube
 from audioread import NoBackendError
 from falcon import HTTP_BAD_REQUEST, HTTP_UNSUPPORTED_MEDIA_TYPE
 from lxml import etree
 from pydub import AudioSegment
 
-
+from pytube import YouTube # Local version to be able to fix things quickly in case youtube changes stuff
 
 CHUNK_SIZE = 3 * 2**20  # bytes
 
@@ -192,7 +191,7 @@ def get_alignment_from_audio(body, response):
     chroma_audio = librosa.feature.chroma_stft(y=wave_data, sr=sr, hop_length=chroma_size)
 
     # Calculate warping path
-    path = librosa.dtw(chroma_mei, chroma_audio)[1]
+    path = librosa.sequence.dtw(chroma_mei, chroma_audio)[1]
     path_dict = {key: value for (key, value) in path}
 
     # Extract mappings
@@ -262,7 +261,7 @@ def get_alignment_from_yt(body, response):
     chroma_audio = librosa.feature.chroma_stft(y=wave_data, sr=sr, hop_length=chroma_size)
 
     # Calculate warping path
-    path = librosa.dtw(chroma_mei, chroma_audio)[1]
+    path = librosa.sequence.dtw(chroma_mei, chroma_audio)[1]
     path_dict = {key: value for (key, value) in path}
 
     # Extract mappings
