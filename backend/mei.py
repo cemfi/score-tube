@@ -63,12 +63,9 @@ def _meico_to_chroma(meico_xml):
         id_to_chroma_index[elem] = begin
         if note_or_rest['pitch'] is not None:  # only notes (pitch != None)
             end = math.ceil((note_or_rest['date'] + note_or_rest['dur']) / shortest_duration)
-            try:
-                chroma_matrix[note_or_rest['pitch'] % 12, begin:end] += 1
-            except IndexError:  # ignore errors resulting from rounding in `end = math.ceil(...)`
-                pass
+            end = min(end, chroma_matrix.shape[1])  # limit end to maximum dimension in case of rounding errors
+            chroma_matrix[note_or_rest['pitch'] % 12, begin:end] += 1
 
-    # normalize each chroma feature independently
-    chroma_matrix = librosa.util.normalize(chroma_matrix)
+    chroma_matrix = librosa.util.normalize(chroma_matrix)  # normalize each chroma feature independently
 
     return chroma_matrix, id_to_chroma_index
