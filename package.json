@@ -16,7 +16,7 @@
     "core-js": "^2.6.5",
     "d3": "^5.9.2",
     "get-youtube-id": "^1.0.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "vue": "^2.6.10",
     "vuetify": "^1.5.5",
     "vuetify-upload-button": "^2.0.0"
